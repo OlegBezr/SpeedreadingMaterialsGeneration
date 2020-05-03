@@ -9,6 +9,7 @@ template_5x5 = "template_5x5"
 
 #!! max width in this template: 11
 triangle_templates = 'triangle_tables.xlsx'
+template_11 = "one"
 changed_file = 'changed.xlsx'
 
 columns = [chr(i+65) for i in range(26)]
@@ -65,7 +66,7 @@ def getTriangleValues(type, table_width):
 
 def saveTriangleTable(table_width, rows, name):
   wb = load_workbook(filename = triangle_templates)
-  template_name = 'one'
+  template_name = 'template_11'
   ws = wb[template_name]
 
   for i in range(table_width):
@@ -79,7 +80,7 @@ def saveTriangleTable(table_width, rows, name):
 
   return real_name
 
-
+# Works only with table_width == 11
 def getTriangleTable(table_width, name, type):
   rows = getTriangleValues(type, table_width)
   table = saveTriangleTable(table_width, rows, name)
