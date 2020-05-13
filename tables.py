@@ -3,14 +3,14 @@ import convertapi
 from random import shuffle
 
 convertapi.api_secret = 'Qv4zM1tcFDkYDkza'
-schulte_templates = 'schulte_tables.xlsx'
+schulte_templates = 'Templates/schulte_tables.xlsx'
 template_3x3 = "template_3x3"
 template_5x5 = "template_5x5"
 
 #!! max width in this template: 11
-triangle_templates = 'triangle_tables.xlsx'
+triangle_templates = 'Templates/triangle_tables.xlsx'
 template_11 = "one"
-changed_file = 'changed.xlsx'
+changed_file = 'Templates/changed.xlsx'
 
 columns = [chr(i+65) for i in range(26)]
 
@@ -40,7 +40,7 @@ def saveSchulteTable(table_size, rows, name):
       ws['{}{}'.format(columns[i], j + 1)] = rows[i][j]
 
   wb.save(changed_file)
-  real_name = '{}.pdf'.format(name)
+  real_name = 'GeneratedFiles/{}.pdf'.format(name)
   # converting to PDF
   result = convertapi.convert('pdf', { 'File': changed_file, 'WorksheetName': template_name })
   result.file.save(real_name)
@@ -74,7 +74,7 @@ def saveTriangleTable(table_width, rows, name):
       ws['{}{}'.format(columns[j], i + 1)] = rows[i]
 
   wb.save(changed_file)
-  real_name = '{}.pdf'.format(name)
+  real_name = 'GeneratedFiles/{}.pdf'.format(name)
   result = convertapi.convert('pdf', { 'File': changed_file, 'WorksheetName': template_name })
   result.file.save(real_name)
 
